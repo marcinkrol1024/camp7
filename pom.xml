@@ -13,6 +13,7 @@
         <module>solid</module>
         <module>hibernatebasics</module>
         <module>twitter</module>
+        <module>genericbacisc</module>
     </modules>
 
     <properties>
