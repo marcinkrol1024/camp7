@@ -1,5 +1,6 @@
 package sages.bootcamp;
 
+import java.math.BigInteger;
 import java.util.List;
 
 public interface ShopDao {
@@ -10,4 +11,6 @@ public interface ShopDao {
   void delete(Shop entity);
 
   List<Shop> findByNameSubstring(String nameSubstring);
+
+  BigInteger sumSquareMetersForNameSubstring(String nameSubstring);
 }

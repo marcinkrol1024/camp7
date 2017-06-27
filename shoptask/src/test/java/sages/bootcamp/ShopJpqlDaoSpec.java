@@ -6,12 +6,13 @@ import org.junit.Test;
 import sages.bootcamp.test.ResourcesManager;
 
 import javax.persistence.EntityManager;
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 
-public class ShopDaoImplSpec {
+public class ShopJpqlDaoSpec {
 
   private EntityManager entityManager = ResourcesManager.getEntityManager();
 
@@ -25,9 +26,9 @@ public class ShopDaoImplSpec {
   @Test
   public void shouldAddAShop() {
     // given
-    ShopDaoImpl shopDao = new ShopDaoImpl(entityManager);
+    ShopJpqlDao shopDao = new ShopJpqlDao(entityManager);
 
-    Shop addedShop = new Shop(0, "Biedronka", "Jerozolimskie");
+    Shop addedShop = new Shop(0, "Biedronka", "Jerozolimskie", 7);
 
     // when
     shopDao.save(addedShop);
@@ -39,11 +40,11 @@ public class ShopDaoImplSpec {
   @Test
   public void shouldAddShops() {
     // given
-    ShopDaoImpl shopDao = new ShopDaoImpl(entityManager);
+    ShopJpqlDao shopDao = new ShopJpqlDao(entityManager);
 
     List<Shop> addedShops = Arrays.asList(
-        new Shop(0, "Biedronka", "Jerozolimskie"),
-        new Shop(0, "Tesco", "Hoża")
+        new Shop(0, "Biedronka", "Jerozolimskie", 1),
+        new Shop(0, "Tesco", "Hoża", 2)
     );
 
     // when
@@ -56,10 +57,10 @@ public class ShopDaoImplSpec {
   @Test
   public void shouldDeleteAShop() {
     // given
-    ShopDaoImpl shopDao = new ShopDaoImpl(entityManager);
+    ShopJpqlDao shopDao = new ShopJpqlDao(entityManager);
 
     // and some shop is in database
-    Shop deletedShop = new Shop(0, "Biedronka", "Jerozolimskie");
+    Shop deletedShop = new Shop(0, "Biedronka", "Jerozolimskie", 3);
     shopDao.save(deletedShop);
 
     // when
@@ -72,17 +73,17 @@ public class ShopDaoImplSpec {
   @Test
   public void shouldFindAShopByNameSubstring() {
     // given
-    ShopDaoImpl shopDao = new ShopDaoImpl(entityManager);
+    ShopJpqlDao shopDao = new ShopJpqlDao(entityManager);
 
     String shopNameSubstring = "onka";
 
     List<Shop> expectedShops = Arrays.asList(
-        new Shop(0, "Biedronka", "Jerozolimskie"),
-        new Shop(0, "SuperonkaMarket", "Ulica")
+        new Shop(0, "Biedronka", "Jerozolimskie", 4),
+        new Shop(0, "SuperonkaMarket", "Ulica", 5)
     );
 
     List<Shop> addedShops = new ArrayList<>();
-    addedShops.add(new Shop(0, "Tesco", "Hoża"));
+    addedShops.add(new Shop(0, "Tesco", "Hoża", 6));
     addedShops.addAll(expectedShops);
 
     shopDao.save(addedShops);
@@ -97,6 +98,29 @@ public class ShopDaoImplSpec {
         new HashSet<>(actualShops)
     );
   }
+
+  @Test
+  public void shouldCalculateSumOfSquareMetersForANameSubstring() {
+    // given
+    ShopJpqlDao shopDao = new ShopJpqlDao(entityManager);
+
+    String nameSubstring = "onka";
+    List<Shop> shops = Arrays.asList(
+        new Shop(0, "Biedronka", "Jerozolimskie", 4),
+        new Shop(0, "SuperonkaMarket", "Ulica", 5),
+        new Shop(0, "Tesco", "Hoża", 6)
+    );
+    shopDao.save(shops);
+
+    BigInteger expectedSumOfSquareMeters = BigInteger.valueOf(9);
+
+    // when
+    BigInteger actualSumOfSquareMeters = shopDao.sumSquareMetersForNameSubstring(nameSubstring);
+
+    // then
+    Assert.assertEquals(expectedSumOfSquareMeters, actualSumOfSquareMeters);
+  }
+
 
   private List<Shop> findAllShops() {
     return entityManager

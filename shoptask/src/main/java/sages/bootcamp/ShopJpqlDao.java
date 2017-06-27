@@ -1,13 +1,14 @@
 package sages.bootcamp;
 
 import javax.persistence.EntityManager;
+import java.math.BigInteger;
 import java.util.List;
 
-public class ShopDaoImpl implements ShopDao {
+public class ShopJpqlDao implements ShopDao {
 
   private final EntityManager entityManager;
 
-  public ShopDaoImpl(EntityManager entityManager) {
+  public ShopJpqlDao(EntityManager entityManager) {
     this.entityManager = entityManager;
   }
 
@@ -40,5 +41,15 @@ public class ShopDaoImpl implements ShopDao {
         .createQuery("select s from Shop s where s.name like :name", Shop.class)
         .setParameter("name", "%" + nameSubstring + "%")
         .getResultList();
+  }
+
+  @Override
+  public BigInteger sumSquareMetersForNameSubstring(String nameSubstring) {
+    return BigInteger.valueOf(
+        (Long) entityManager
+            .createQuery("select sum(s.squareMeters) from Shop s where s.name like :nameSubstring")
+            .setParameter("nameSubstring", "%" + nameSubstring + "%")
+            .getSingleResult()
+    );
   }
 }
