@@ -112,3 +112,24 @@ Add squareMeters field to shop, add sumSquareMetersForNameSubstring(nameSubstrin
 TASK 9
 ------
 Add ShopNamedQueryDao implementation, use named queries instead of jpqls for reading.
+
+TASK 10
+-------
+Create a simple tracker.
+
+*Part 1*<br>
+Create user class with username and password<br>
+Create dao to add users and to find user with a username<br>
+*Part 2*<br>
+Create project class with description and assigned users<br>
+Create dao to create projects and assign users to projects<br>
+
+**For advanced only**<br>
+Users should log in with username and password
+Users should be able to create projects
+Users should be able to define tasks within projects
+Users should be able to view tasks assigned to a project
+Users should be able to view projects list
+Users should be able to assign users to tasks
+Users should be able to mark tasks as resolved
+Tasks should initially be unresolved
