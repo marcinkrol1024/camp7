@@ -4,9 +4,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import java.util.List;
 
-public class NotebookDaoImpl extends AbstractDaoImpl<Notebook> implements NotebookDao {
+public class NotebookNativeSqlDao extends AbstractDaoImpl<Notebook> implements NotebookDao {
 
-  public NotebookDaoImpl(EntityManager entityManager) {
+  public NotebookNativeSqlDao(EntityManager entityManager) {
     super(entityManager, Notebook.class);
   }
 

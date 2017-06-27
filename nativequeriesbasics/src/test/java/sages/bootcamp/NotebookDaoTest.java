@@ -9,7 +9,7 @@ import java.util.List;
 
 public class NotebookDaoTest {
 
-  NotebookDao notebookDao = new NotebookDaoImpl(Persistence
+  NotebookDao notebookDao = new NotebookJpqlDao(Persistence
       .createEntityManagerFactory("postgres").createEntityManager());
 
   @Test
