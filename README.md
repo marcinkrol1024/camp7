@@ -125,11 +125,11 @@ Create project class with description and assigned users<br>
 Create dao to create projects and assign users to projects<br>
 
 **For advanced only**<br>
-Users should log in with username and password
-Users should be able to create projects
-Users should be able to define tasks within projects
-Users should be able to view tasks assigned to a project
-Users should be able to view projects list
-Users should be able to assign users to tasks
-Users should be able to mark tasks as resolved
-Tasks should initially be unresolved
+Users should log in with username and password<br>
+Users should be able to create projects<br>
+Users should be able to define tasks within projects<br>
+Users should be able to view tasks assigned to a project<br>
+Users should be able to view projects list<br>
+Users should be able to assign users to tasks<br>
+Users should be able to mark tasks as resolved<br>
+Tasks should initially be unresolved<br>
