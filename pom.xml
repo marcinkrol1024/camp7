@@ -15,6 +15,7 @@
         <module>twitter</module>
         <module>genericbacisc</module>
         <module>shoptask</module>
+        <module>nativequeriesbasics</module>
     </modules>
 
     <properties>
