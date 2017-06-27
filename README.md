@@ -108,3 +108,7 @@ TASK 8
 Add ShopNativeSqlDao implementation, use native queries instead of jpqls for reading.
 
 Add squareMeters field to shop, add sumSquareMetersForNameSubstring(nameSubstring) method to dao.
+
+TASK 9
+------
+Add ShopNamedQueryDao implementation, use named queries instead of jpqls for reading.
