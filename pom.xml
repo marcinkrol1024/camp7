@@ -16,6 +16,7 @@
         <module>genericbacisc</module>
         <module>shoptask</module>
         <module>nativequeriesbasics</module>
+        <module>namedqueriesbasics</module>
     </modules>
 
     <properties>
