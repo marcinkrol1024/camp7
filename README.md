@@ -71,3 +71,34 @@ Shop
 Product
 * price
 * name
+
+TASK 6
+------
+Twitter
+Chcemy stworzyć model oraz warstwę dostępu dla aplikacji Twitter. Założenia modelu:
+- użytkownik ma login, mail, hasło
+- użytkownik może dodawać tweety (każdy tweet jest przypisany tylko do jednego użytkownika, który go dodał)
+- tweet ma długość 140 znaków, datę dodania oraz może dostawać pozytywne i negatywne głosy (nie musimy wiedzieć od kogo)
+- tweet może zawierać w treści oznaczenie innego użytkownika (za pomocą małpy @), np: "Hej @bartektartanus zobacz co znalazłem w sieci"
+- tweet może zawierać w treści hash-tag oznaczony krzyżykiem - #, np: "jestem właśnie na meczu #polska #włochy"
+ 
+Oczekiwane funkcjonalności:
+- zapis użytkownika oraz jego tweetów
+- wyszukiwanie użytkownika zarówno po loginie jak i po mailu
+- wyszukiwanie N najlepiej ocenianych tweetów użytkownika
+- wyszukiwanie N najlepiej ocenianych tweetów według hashtaga
+- wyszukiwanie wszystkich tweetów, w których oznaczony został dany użytkownik
+- wyszukiwanie wszystkich tweetów z bieżącego dnia
+
+TASK 7
+------
+Create Shops class
+
+Create dao to add/delete/read shops by name substring
+
+Create tests
+
+Shop
+ * id
+ * name
+ * address
