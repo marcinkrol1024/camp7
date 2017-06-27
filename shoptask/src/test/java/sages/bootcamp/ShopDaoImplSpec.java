@@ -1,6 +1,5 @@
 package sages.bootcamp;
 
-import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -19,11 +18,8 @@ public class ShopDaoImplSpec {
   @Before
   public void before() {
     entityManager.getTransaction().begin();
-  }
-
-  @After
-  public void after() {
-    entityManager.getTransaction().rollback();
+    entityManager.createQuery("delete from Shop").executeUpdate();
+    entityManager.getTransaction().commit();
   }
 
   @Test

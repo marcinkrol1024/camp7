@@ -13,21 +13,32 @@ public class ShopDaoImpl implements ShopDao {
 
   @Override
   public void save(Shop shop) {
-
+    entityManager.getTransaction().begin();
+    entityManager.persist(shop);
+    entityManager.getTransaction().commit();
   }
 
   @Override
   public void save(List<Shop> shops) {
-
+    entityManager.getTransaction().begin();
+    for (Shop shop : shops) {
+      entityManager.persist(shop);
+    }
+    entityManager.getTransaction().commit();
   }
 
   @Override
-  public void delete(Shop entity) {
-
+  public void delete(Shop shop) {
+    entityManager.getTransaction().begin();
+    entityManager.remove(shop);
+    entityManager.getTransaction().commit();
   }
 
   @Override
   public List<Shop> findByNameSubstring(String nameSubstring) {
-    return null;
+    return entityManager
+        .createQuery("select s from Shop s where s.name like :name", Shop.class)
+        .setParameter("name", "%" + nameSubstring + "%")
+        .getResultList();
   }
 }
