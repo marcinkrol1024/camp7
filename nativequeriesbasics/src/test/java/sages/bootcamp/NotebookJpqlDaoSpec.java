@@ -7,7 +7,7 @@ import javax.persistence.Persistence;
 import java.time.Instant;
 import java.util.List;
 
-public class NotebookDaoTest {
+public class NotebookJpqlDaoSpec {
 
   NotebookDao notebookDao = new NotebookJpqlDao(Persistence
       .createEntityManagerFactory("postgres").createEntityManager());
