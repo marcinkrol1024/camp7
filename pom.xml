@@ -14,6 +14,7 @@
         <module>hibernatebasics</module>
         <module>twitter</module>
         <module>genericbacisc</module>
+        <module>shoptask</module>
     </modules>
 
     <properties>
