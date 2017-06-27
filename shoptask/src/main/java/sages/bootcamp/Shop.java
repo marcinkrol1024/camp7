@@ -5,11 +5,16 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import java.util.Objects;
 
 @Entity
 @Table(name = "shops")
+@NamedQuery(
+    name = "sum of square meters",
+    query = "select sum(s.squareMeters) from Shop s where s.name like :nameSubstring"
+)
 public class Shop {
 
   @Id
